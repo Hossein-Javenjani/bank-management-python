@@ -13,11 +13,10 @@ class Bank:
             except ValueError:
                 print("account number must be a int number!")
                 continue
-            # چک کن آیا تکراریه یا نه
             if any(i.account_number == account_number for i in self.accounts):
                 print("This account number has already been used!")
                 continue
-            break  # اگه به اینجا رسید، یعنی شماره سالمه
+            break 
 
         while True:
             try:
@@ -30,7 +29,12 @@ class Bank:
         self.accounts.append(account)
 
     def deposit(self):
-        account_number = int(input("What account do you want to deposit money into? "))
+        while True:
+            try:
+                account_number = int(input("What account do you want to deposit money into? "))
+                break
+            except ValueError:
+                print("Account number must be a number!")
         found = False
         for i in self.accounts:
             if account_number == i.account_number:
@@ -43,7 +47,12 @@ class Bank:
             print(f"{account_number} isn't account in the bank")
 
     def withdraw(self):
-        account_number = int(input("What account do you want to deposit money into? "))
+        while True:
+            try:
+                account_number = int(input("What account do you want to withdraw money into? "))
+                break
+            except ValueError:
+                print("Account number must be a number!")
         found = False
         for i in self.accounts:
             if account_number == i.account_number:
